@@ -177,7 +177,7 @@ pub mod invoicesrpc {
 
 #[cfg(feature = "staterpc")]
 pub mod staterpc {
-    tonic::include_proto!("staterpc");
+    tonic::include_proto!("lnrpc");
 }
 
 /// Supplies requests with macaroon
