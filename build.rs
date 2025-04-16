@@ -22,7 +22,7 @@ fn main() -> std::io::Result<()> {
         "verrpc/verrpc.proto",
         "routerrpc/router.proto",
         "invoicesrpc/invoices.proto",
-        "staterpc/state.proto",
+        "stateservice.proto",
     ];
 
     let proto_paths: Vec<_> = protos.iter().map(|proto| dir.join(proto)).collect();
@@ -30,6 +30,7 @@ fn main() -> std::io::Result<()> {
     tonic_build::configure()
         .build_client(true)
         .build_server(false)
+        .protoc_arg("--experimental_allow_proto3_optional")
         .compile(&proto_paths, &[dir])?;
     Ok(())
 }
